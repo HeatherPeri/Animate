@@ -1,13 +1,15 @@
-var topics = [Jim Halpert, Pam Beesly, Dwight Schrute, Michael Scott, Stanley Hudson, Toby Flenderson, Oscar Martinez, Kevin Malone, Meredith Office, Nard Dog]
 
-for (i = 0; i < topics.length, i++){
+var topics = ("Jim Halpert", "Pam Beesly", "Dwight Schrute", "Michael Scott", "Stanley Hudson", "Toby Flenderson", "Oscar Martinez", "Kevin Malone", "Meredith Office", "Nard Dog");
 
-}
+for (i = 0; i < topics.length; i++) {
+
+};
+
 $("button").on("click", function() {
     var topics = $(this).attr("data-person");
 
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-      person + "&api_key=dc6zaTOxFJmzC&limit=10";
+      topics + "&api_key=xD23MaYKjAXVsPYaXqkqTKtsqdgB54Qm&limit=10";
 
     $.ajax({
       url: queryURL,
@@ -28,11 +30,9 @@ $("button").on("click", function() {
             var personImage = $("<img>");
             personImage.attr("src", results[i].images.fixed_height.url);
 
-            // Appending the paragraph and personImage we created to the "gifDiv" div we created
             gifDiv.append(p);
             gifDiv.append(personImage);
 
-            // Prepending the gifDiv to the "#gifs-appear-here" div in the HTML
             $("#gifs-appear-here").prepend(gifDiv);
           }
         }
