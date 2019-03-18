@@ -1,0 +1,10 @@
+body {
+    color: whitesmoke;
+    background-color: lightslategray;
+    text-align: center
+}
+
+.button{
+    background-color: navy;
+    color: whitesmoke;
+}
