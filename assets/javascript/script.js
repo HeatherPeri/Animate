@@ -7,15 +7,15 @@
 
 $("button").on("click", function() {
   var person = $(this).attr("data-person");
-    var state = $(this).attr("data-state");
+  //   var state = $(this).attr("data-state");
 
-    if (state === "still") {
-      $(this).attr("button", $(this).attr("data-animate"));
-      $(this).attr("data-state", "animate");
-    } else {
-      $(this).attr("button", $(this).attr("data-still"));
-      $(this).attr("data-state", "still");
-    }
+  //   if (state === "still") {
+  //     $(this).attr("button", $(this).attr("data-animate"));
+  //     $(this).attr("data-state", "animate");
+  //   } else {
+  //     $(this).attr("button", $(this).attr("data-still"));
+  //     $(this).attr("data-state", "still");
+  //   }
 
   var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
     person + "&api_key=dc6zaTOxFJmzC&limit=10";
@@ -26,6 +26,7 @@ $("button").on("click", function() {
   })
     .then(function(response) {
       var results = response.data;
+      console.log(results, "results");
 
       for (var i = 0; i < results.length; i++) {
 
@@ -38,20 +39,12 @@ $("button").on("click", function() {
 
           var Image = $("<img>");
 
-          Image.attr("src", results[i].images.fixed_height.url);
+          var animate = Image.attr("src", results[i].images.fixed_height.url);
+          var still = Image.attr("src", results[i].images.fixed_height_still.url);
 
-            var state = $(this).attr("data-state");
-            if (state === "still") {
-              var click = $(this);
-              var animated = click.attr("data-animate");
-              click.attr("src", animated);
-          
-              $(this).attr("src", $(this).attr("data-animate"));
-              $(this).attr("data-state", "animate");
-            } else {
-              $(this).attr("src", $(this).attr("data-still"));
-              $(this).attr("data-state", "still");
-            }
+          Image.attr("data-animate", animate);
+          Image.attr("data-animate", still);
+
           
 
           gifDiv.append(p);
@@ -60,6 +53,26 @@ $("button").on("click", function() {
           $("#gifs-appear-here").prepend(gifDiv);
         }
       }
-    });
+
+      $(document).on("click", ".gif", function() {
+        console.log("this is working");
+        var state = $(this).attr("data-state");
+        console.log(state, "state");
+        if (state === "still") {
+          var click = $(this);
+          console.log(click, "clicking this")
+          var animated = click.attr("data-animate");
+          click.attr("src", animated);
+          console.log (animate, "this should animate")
+      
+          $(this).attr("src", $(this).attr("data-animate"));
+          $(this).attr("data-state", "animate");
+        } else {
+          $(this).attr("src", $(this).attr("data-still"));
+          $(this).attr("data-state", "still");
+        }
+      });
+
+});
 });
 
