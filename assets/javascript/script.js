@@ -39,13 +39,17 @@ $("button").on("click", function() {
 
           var Image = $("<img>");
 
-          var animate = Image.attr("src", results[i].images.fixed_height.url);
-          var still = Image.attr("src", results[i].images.fixed_height_still.url);
+          // var animate = Image.attr("src", results[i].images.fixed_height.url);
+          // var still = Image.attr("src", results[i].images.fixed_height_still.url);
+          var animate = results[i].images.fixed_height.url;
+          var still = results[i].images.fixed_height_still.url;
+
+          Image.attr("src", still);
+          // Image.attr("src", animate);
 
           Image.attr("data-animate", animate);
-          Image.attr("data-animate", still);
-
-          
+          Image.attr("data-still", still);
+          Image.attr("data-state", "still");
 
           gifDiv.append(p);
           gifDiv.append(Image);
@@ -54,25 +58,26 @@ $("button").on("click", function() {
         }
       }
 
-      $(document).on("click", ".gif", function() {
-        console.log("this is working");
-        var state = $(this).attr("data-state");
-        console.log(state, "state");
-        if (state === "still") {
-          var click = $(this);
-          console.log(click, "clicking this")
-          var animated = click.attr("data-animate");
-          click.attr("src", animated);
-          console.log (animate, "this should animate")
-      
-          $(this).attr("src", $(this).attr("data-animate"));
-          $(this).attr("data-state", "animate");
-        } else {
-          $(this).attr("src", $(this).attr("data-still"));
-          $(this).attr("data-state", "still");
-        }
-      });
 
 });
+});
+
+$(document).on("click", "img", function() {
+  console.log("this is working");
+  var state = $(this).attr("data-state");
+  console.log(state, "state");
+  if (state === "still") {
+    var click = $(this);
+    console.log(click, "clicking this")
+    var animated = click.attr("data-animate");
+    click.attr("src", "animate");
+    console.log ("animate", "this should animate")
+
+    $(this).attr("src", $(this).attr("data-animate"));
+    $(this).attr("data-state", "animate");
+  } else {
+    $(this).attr("src", $(this).attr("data-still"));
+    $(this).attr("data-state", "still");
+  }
 });
 
