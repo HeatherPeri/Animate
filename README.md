@@ -13,3 +13,5 @@
 7. Deploy your assignment to Github Pages.
 
 8. **Rejoice**! You just made something really cool.
+
+data-still="Jim Halpert" data-animate="Jim Halpert" data-state="still">
