@@ -1,17 +1,15 @@
 # Animate
 
-3. When the user clicks on a button, the page should grab 10 static, non-animated gif images from the GIPHY API and place them on the page.
+App that displays 10 buttons related to the famous TV Show "The Office"
+When the user clicks on a button, the page should grab 10 static, non-animated gif images from the GIPHY API and place them on the page. When the user clicks one of the still GIPHY images, the gif should animate. If the user clicks the gif again, it should stop playing.
+Under every gif, display its rating (PG, G, so on).
 
-4. When the user clicks one of the still GIPHY images, the gif should animate. If the user clicks the gif again, it should stop playing.
+# Motivation
 
-5. Under every gif, display its rating (PG, G, so on).
-   * This data is provided by the GIPHY API.
-   * Only once you get images displaying with button presses should you move on to the next step.
+This was an assignment from the UNC Bootcamp.  The importance behind this assignment is to show knowledge of using APIs successfully and Javascript.
 
-6. Add a form to your page takes the value from a user input box and adds it into your `topics` array. Then make a function call that takes each topic in the array remakes the buttons on the page.
+#API
 
-7. Deploy your assignment to Github Pages.
+This data is provided by the GIPHY API.
 
-8. **Rejoice**! You just made something really cool.
 
-data-still="Jim Halpert" data-animate="Jim Halpert" data-state="still">
